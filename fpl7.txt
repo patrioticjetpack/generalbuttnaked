@@ -1,0 +1,7 @@
+# A FPL program with undeclared variables and labels.
+
+	add x 2
+	sub y z
+	beq nowhere
+	nop wait
+	end

@@ -1,0 +1,10 @@
+# A simple FPL program that causes the drone to take off, hover, and land.
+	int wait 3
+	cmd <initialize>
+	cmd <arm>
+	nop wait		# wait for 3 seconds
+	cmd <takeoff>
+	add wait 2
+	nop wait		# wait for 2 seconds
+	cmd <land>
+	end

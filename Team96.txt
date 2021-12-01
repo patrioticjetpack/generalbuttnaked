@@ -1,0 +1,68 @@
+# A FPL program that has the Tello takeoff and trace the shape of a'square' and a 'triangle' in all 3 dimensions.
+# A roughly 8' x 8' x 8' maneuvering region is needed.
+	int x     0
+	int y     0
+	int z     50
+	int count 2
+	int wait  5
+start:
+	cmd <initialize>
+	cmd <arm>
+	cmd <takeoff>
+	nop wait
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+move1:
+	set x 0
+	set y 50
+	set z 0
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+move2:
+	set x 50
+	set y 0
+	set z 0
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+move3:
+	set x 0
+	set y -50
+	set z 0
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+move4:
+	set x -50
+	set y 0
+	set z 0
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+move5:
+	set x -150
+	set y 0
+	set z 0
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+move6:
+	set x 50
+	set y 50
+	set z 50
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+move7:
+	set x 50
+	set y -50
+	set z 50
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+
+done:
+	cmd <land>
+	end

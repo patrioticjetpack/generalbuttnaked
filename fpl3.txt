@@ -1,0 +1,52 @@
+# A FPL program that has the Tello takeoff and trace the letter 'V' twice in all 3 dimensions.
+# A roughly 8' x 8' x 8' maneuvering region is needed.
+
+	int x     0
+	int y     0
+	int z     50
+	int count 2
+	int wait  5
+start:
+	cmd <initialize>
+	cmd <arm>
+	cmd <takeoff>
+	nop wait
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+	bra loop_check
+move1:
+	set x 50
+	set y 50
+	set z 50
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+undo_move1:
+	set x -50
+	set y -50
+	set z -50
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+move2:
+	set x -50
+	set y -50
+	set z 50
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+undo_move2:
+	set x 50
+	set y 50
+	set z -50
+	cmd <move %x %y %z>
+	add wait 5
+	nop wait
+	sub count 1
+loop_check:
+	cmp count 0
+	bne move1
+done:
+	cmd <land>
+	end

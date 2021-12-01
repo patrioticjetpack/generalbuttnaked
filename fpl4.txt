@@ -1,0 +1,30 @@
+# A simple FPL program yielding a
+# downward staircase pattern
+	int wait 0
+	int loop_count 10
+	int x 0
+	int y 0
+	int z 1
+	cmd <initialize>
+	cmd <arm>
+	cmd <takeoff>
+	add wait 1
+	nop wait
+loop:
+	set x 25
+	set y 0
+	cmd <move %x %y %z>
+	add wait 1
+	nop wait
+	set x 0
+	set y 25
+	cmd <move %x %y %z>
+	add wait 1
+	nop wait
+	sub loop_count 1
+	cmp loop_count 0
+	bne loop
+	cmd <land>
+	add wait 1
+	nop wait
+	end

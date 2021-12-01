@@ -1,0 +1,52 @@
+# A FPL program with lots of parse errors.
+	int x
+	int y	  1 2	
+	int
+	int count abc
+	int wait  x
+start:	another_label:
+	add
+	add x
+	add 2
+	add 2 x
+	sub
+	sub x
+	sub 2
+	sub 2 x
+	mul
+	mul x
+	mul 2
+	mul 2 x
+	div
+	div x
+	div 2
+	div 2 x
+	set
+	set y
+	set 3
+	set 2 y
+	cmp
+	cmp x
+	cmp 1 2
+	cmp 2 x
+	cmp x 2 3
+	beq
+	beq 12
+	beq label1 12
+	bne
+	bne 12
+	bne label2 13
+	bra *
+	bra 12
+	bra label1 label2
+	cmd initialize
+	cmd
+	cmd <takeoff> <arm>
+	nop
+	nop wait1 12
+	nop 12 wait1
+done:
+done:
+	abc
+	end 1
+	end x 2

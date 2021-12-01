@@ -1,0 +1,37 @@
+# A simple FPL program yielding a
+# counterclockwise spiral out pattern
+	int wait 0
+	int loop_count 10
+	int sign 1
+	int counter 1
+	int x 0
+	int y 0
+	int z 1
+	cmd <initialize>
+	cmd <arm>
+	cmd <takeoff>
+	add wait 1
+	nop wait
+loop:
+	set x sign
+	mul x counter
+	mul x 25
+	set y 0
+	cmd <move %x %y %z>
+	add wait 1
+	nop wait
+	set y x
+	set x 0
+	cmd <move %x %y %z>
+	add wait 1
+	nop wait
+	mul sign -1
+	add counter 1
+	sub loop_count 1
+	cmp loop_count 0
+	bne loop
+	cmd <land>
+	add wait 1
+	nop wait
+	end
+
